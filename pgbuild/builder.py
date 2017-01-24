@@ -63,7 +63,7 @@ def inject_jobs(tasks, jobs, shards):
     if shards:
         task = """
 - cron: %s
-  with_items: hostvars[inventory_hostname].shards
+  with_items: "{{{{hostvars[inventory_hostname].shards}}}}"
   sudo: yes
   sudo_user: postgres
 """
