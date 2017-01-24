@@ -146,7 +146,7 @@ class SQLTask(object):
         return """
 - name: deploy {0}.sql
   command: psql -f /tmp/.pgbuild/run/{0}.sql -d {{{{cluster_name}}}}{{{{'_%02d'|format(item)}}}} -p {{{{port}}}} --set=ON_ERROR_STOP=1
-  with_items: "{{hostvars[inventory_hostname].shards}}"
+  with_items: "{{{{hostvars[inventory_hostname].shards}}}}"
   sudo: yes
   sudo_user: postgres
 """.format(self.number)
